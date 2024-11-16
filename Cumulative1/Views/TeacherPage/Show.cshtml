@@ -1,0 +1,9 @@
+﻿@model Cumulative1.Models.Teacher
+
+
+<!-- Displaying all the details of Selected teacher from list.cshtml on this webpage  -->
+
+<h1>@Model.TeacherFName @Model.TeacherLName</h1>
+<p>Employee Number : @Model.EmployeeNumber.ToString()</p>
+<p>Hire Date : @Model.TeacherHireDate.ToString("yyyy-M-d")</p>
+<p>Salary : @Model.TeacherSalary.ToString()</p>
