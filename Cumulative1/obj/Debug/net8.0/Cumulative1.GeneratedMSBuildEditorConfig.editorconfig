@@ -18,6 +18,14 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = E:\Humber\Sem-1\Back-End Web Development 1 - HTTP-5125-RNB\Back-End-Web-Development-1---HTTP-5125\Cumulative1
 build_property._RazorSourceGeneratorDebug = 
 
+[E:/Humber/Sem-1/Back-End Web Development 1 - HTTP-5125-RNB/Back-End-Web-Development-1---HTTP-5125/Cumulative1/Views/CoursePage/List.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ291cnNlUGFnZVxMaXN0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/Humber/Sem-1/Back-End Web Development 1 - HTTP-5125-RNB/Back-End-Web-Development-1---HTTP-5125/Cumulative1/Views/CoursePage/Show.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ291cnNlUGFnZVxTaG93LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [E:/Humber/Sem-1/Back-End Web Development 1 - HTTP-5125-RNB/Back-End-Web-Development-1---HTTP-5125/Cumulative1/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
@@ -32,6 +40,14 @@ build_metadata.AdditionalFiles.CssScope =
 
 [E:/Humber/Sem-1/Back-End Web Development 1 - HTTP-5125-RNB/Back-End-Web-Development-1---HTTP-5125/Cumulative1/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/Humber/Sem-1/Back-End Web Development 1 - HTTP-5125-RNB/Back-End-Web-Development-1---HTTP-5125/Cumulative1/Views/StudentPage/List.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3R1ZGVudFBhZ2VcTGlzdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/Humber/Sem-1/Back-End Web Development 1 - HTTP-5125-RNB/Back-End-Web-Development-1---HTTP-5125/Cumulative1/Views/StudentPage/Show.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3R1ZGVudFBhZ2VcU2hvdy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [E:/Humber/Sem-1/Back-End Web Development 1 - HTTP-5125-RNB/Back-End-Web-Development-1---HTTP-5125/Cumulative1/Views/TeacherPage/List.cshtml]

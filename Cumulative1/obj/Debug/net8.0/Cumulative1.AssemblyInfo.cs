@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Cumulative1")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+6ec94e3f5a8c599cbbc0cc3a8d61f136ca10dbe1")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+52038c1182e288c56b3efe20e94713edd51b0c77")]
 [assembly: System.Reflection.AssemblyProductAttribute("Cumulative1")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Cumulative1")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
