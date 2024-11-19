@@ -1,0 +1,31 @@
+﻿@model IEnumerable<Cumulative1.Models.Student>
+
+<h1>List of Students</h1>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Student ID</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Student Number</th>
+            <th>Enrollment Date</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var student in Model)
+        {
+            <tr>
+                <td>@student.StudentId</td>
+                <td>@student.StudentFName</td>
+                <td>@student.StudentLName</td>
+                <td>@student.StudentNumber</td>
+                <td>@student.EnrolDate.ToString("yyyy-MM-dd")</td>
+                <td>
+                    <a href="/StudentPage/Show/@student.StudentId" class="btn btn-primary btn-sm">Details</a>
+
+                    </td>
+            </tr>
+        }
+    </tbody>
+</table>

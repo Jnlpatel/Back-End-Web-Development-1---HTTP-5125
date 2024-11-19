@@ -1,0 +1,29 @@
+﻿@model IEnumerable<Course>
+
+<h2>Course List</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Course Code</th>
+            <th>Course Name</th>
+            <th>Start Date</th>
+            <th>Finish Date</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var course in Model)
+        {
+            <tr>
+                <td>@course.CourseCode</td>
+                <td>@course.CourseName</td>
+                <td>@course.StartDate.ToShortDateString()</td>
+                <td>@course.FinishDate.ToShortDateString()</td>
+                <td>
+                    <a href="@Url.Action("Show", "CoursePage", new { id = course.CourseId })">View Details</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

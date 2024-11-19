@@ -1,0 +1,13 @@
+﻿@model Course
+
+<h2>Course Details</h2>
+
+<div>
+    <p><strong>Course Code:</strong> @Model.CourseCode</p>
+    <p><strong>Course Name:</strong> @Model.CourseName</p>
+    <p><strong>Start Date:</strong> @Model.StartDate.ToShortDateString()</p>
+    <p><strong>Finish Date:</strong> @Model.FinishDate.ToShortDateString()</p>
+    <p><strong>Teacher ID:</strong> @Model.TeacherId</p>
+</div>
+
+<a href="@Url.Action("List", "CoursePage")">Back to List</a>
