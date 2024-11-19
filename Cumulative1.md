@@ -1,7 +1,7 @@
 
 ---
 
-# Teacher Management System - ASP.NET Core MVC and Web API
+# Cumulative1 - ASP.NET Core MVC and Web API
 
 This project demonstrates a **Teacher Management System** built with **ASP.NET Core MVC and Web API**. The system provides **CRUD operations** on the `Teachers` table of the school database and supports dynamic server-rendered pages for user interaction.
 
@@ -9,7 +9,6 @@ This project demonstrates a **Teacher Management System** built with **ASP.NET C
 
 ## Features
 
-### **Quantitative (8 Marks)**
 1. **API Endpoints**
    - **List All Teachers**
      ```csharp
@@ -55,8 +54,9 @@ This project demonstrates a **Teacher Management System** built with **ASP.NET C
 
 1. **Clone Repository**:
    ```bash
-   git clone https://github.com/your-repo/teacher-management-system.git
-   cd teacher-management-system
+   git clone https://github.com/Jnlpatel/Back-End-Web-Development-1---HTTP-5125.git
+   cd Back-End-Web-Development-1---HTTP-5125
+   cd Cumulative1
    ```
 
 2. **Setup Database**:
