@@ -169,6 +169,97 @@ namespace Cumulative1.Controllers
             //Return the Information of the Teacher
             return TeacherData;
         }
+
+        /// <summary>
+        /// Adds a teacher to the database.
+        /// </summary>
+        /// <param name="newTeacher">Teacher object containing details of the new teacher.</param>
+        /// <example>
+        /// POST: api/TeacherAPI/AddTeacher
+        /// Headers: Content-Type: application/json
+        /// Request Body:
+        /// {
+        ///     "TeacherFName": "John",
+        ///     "TeacherLName": "Doe",
+        ///     "EmployeeNumber": "T12345",
+        ///     "TeacherHireDate": "2023-01-15",
+        ///     "TeacherSalary": 55000
+        /// } -> 200
+        /// </example>
+        /// <returns>
+        /// The inserted Teacher Id from the database if successful. 0 if unsuccessful.
+        /// </returns>
+        /// 
+        [HttpPost]
+        [Route("AddTeacher")]
+        public IActionResult AddTeacher([FromBody] Teacher newTeacher)
+        {
+            if (string.IsNullOrWhiteSpace(newTeacher.TeacherFName) || string.IsNullOrWhiteSpace(newTeacher.TeacherLName))
+                return BadRequest("First Name and Last Name cannot be empty.");
+
+            if (newTeacher.TeacherHireDate > DateTime.Now)
+                return BadRequest("Hire date cannot be in the future.");
+
+            using (MySqlConnection connection = _context.AccessDatabase())
+            {
+                connection.Open();
+                MySqlCommand command = connection.CreateCommand();
+                command.CommandText = @"
+            INSERT INTO teachers (teacherfname, teacherlname, employeenumber, hiredate, salary)
+            VALUES (@fname, @lname, @empnum, @hiredate, @salary)";
+                command.Parameters.AddWithValue("@fname", newTeacher.TeacherFName);
+                command.Parameters.AddWithValue("@lname", newTeacher.TeacherLName);
+                command.Parameters.AddWithValue("@empnum", newTeacher.EmployeeNumber);
+                command.Parameters.AddWithValue("@hiredate", newTeacher.TeacherHireDate);
+                command.Parameters.AddWithValue("@salary", newTeacher.TeacherSalary);
+
+                try
+                {
+                    command.ExecuteNonQuery();
+                }
+                catch (MySqlException ex)
+                {
+                    if (ex.Message.Contains("Duplicate entry"))
+                        return Conflict("Employee number already exists.");
+                    return StatusCode(500, "An error occurred while adding the teacher.");
+                }
+            }
+
+            return Ok("Teacher added successfully.");
+        }
+
+        /// <summary>
+        /// Deletes a teacher from the database.
+        /// </summary>
+        /// <param name="id">Primary key of the teacher to delete.</param>
+        /// <example>
+        /// DELETE: api/TeacherAPI/DeleteTeacher/3 -> 1
+        /// </example>
+        /// <returns>
+        /// Number of rows affected by the delete operation.
+        /// </returns>
+        /// 
+        [HttpDelete]
+        [Route("DeleteTeacher/{id}")]
+        public IActionResult DeleteTeacher(int id)
+        {
+            using (MySqlConnection connection = _context.AccessDatabase())
+            {
+                connection.Open();
+                MySqlCommand command = connection.CreateCommand();
+                command.CommandText = "DELETE FROM teachers WHERE teacherid = @id";
+                command.Parameters.AddWithValue("@id", id);
+
+                int rowsAffected = command.ExecuteNonQuery();
+
+                if (rowsAffected == 0)
+                    return NotFound("Teacher not found.");
+
+                return Ok("Teacher deleted successfully.");
+            }
+        }
+
+
     }
 
 

@@ -9,29 +9,29 @@ This project demonstrates a **Teacher Management System** built with **ASP.NET C
 
 ## Features
 
-1. **API Endpoints**
-   - **List All Teachers**
-     ```csharp
-     [HttpGet("ListOfTeachers")]
-     public List<Teacher> ListOfTeachers()
-     {
-         // Returns all teachers from the database
-     }
-     ```
-   - **Find Teacher by ID**
-     ```csharp
-     [HttpGet("FindTeacherDetail/{id}")]
-     public Teacher FindTeacherDetail(int id)
-     {
-         // Returns details of a specific teacher by ID
-     }
-     ```
-
-2. **Dynamic Web Pages**
+1. **Add Teacher**: Users can add new teachers with details like name, hire date, and salary.
+2. **Delete Teacher**: Users can delete a teacher by ID.
+3. **List Teachers**: Displays all teachers in the database.
+4. **Dynamic Web Pages**
    - **Teacher List View** (`/Teacher/List.cshtml`)
    - **Teacher Detail View** (`/Teacher/Show.cshtml`)
+   - **Teacher Add View** (`/Teacher/Add.cshtml`)
 
 ---
+
+## API Endpoints
+
+1. **GET: api/TeacherAPI/ListOfTeachers**
+   - Retrieves a list of all teachers in the database.
+
+2. **GET: api/TeacherAPI/FindTeacherDetail/{id}**
+   - Retrieves details of a specific teacher by ID.
+
+3. **POST: api/TeacherAPI/AddTeacher**
+   - Adds a new teacher to the database.
+
+4. **DELETE: api/TeacherAPI/DeleteTeacher/{id}**
+   - Deletes a teacher from the database.
 
 
 ## Testing
@@ -41,12 +41,15 @@ This project demonstrates a **Teacher Management System** built with **ASP.NET C
   ```bash
   curl -X GET "http://localhost:5000/api/TeacherAPI/ListOfTeachers"
   curl -X GET "http://localhost:5000/api/TeacherAPI/FindTeacherDetail/1"
+  curl -X GET "http://localhost:5000/api/TeacherAPI/AddTeacher"
+  curl -X GET "http://localhost:5000/api/TeacherAPI/DeleteTeacher/1"
   ```
 
 **Web Page Testing**:
 - Visit:
   - `http://localhost:<port>/Teacher/List`
   - `http://localhost:<port>/Teacher/Show/{id}`
+  - `http://localhost:<port>/Teacher/New`
 
 ---
 

@@ -50,8 +50,16 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3R1ZGVudFBhZ2VcU2hvdy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[E:/Humber/Sem-1/Back-End Web Development 1 - HTTP-5125-RNB/Back-End-Web-Development-1---HTTP-5125/Cumulative1/Views/TeacherPage/DeleteConfirm.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGVhY2hlclBhZ2VcRGVsZXRlQ29uZmlybS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [E:/Humber/Sem-1/Back-End Web Development 1 - HTTP-5125-RNB/Back-End-Web-Development-1---HTTP-5125/Cumulative1/Views/TeacherPage/List.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGVhY2hlclBhZ2VcTGlzdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/Humber/Sem-1/Back-End Web Development 1 - HTTP-5125-RNB/Back-End-Web-Development-1---HTTP-5125/Cumulative1/Views/TeacherPage/New.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGVhY2hlclBhZ2VcTmV3LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [E:/Humber/Sem-1/Back-End Web Development 1 - HTTP-5125-RNB/Back-End-Web-Development-1---HTTP-5125/Cumulative1/Views/TeacherPage/Show.cshtml]
