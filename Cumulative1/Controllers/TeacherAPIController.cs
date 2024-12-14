@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Cumulative1.Models;
 using System;
 using MySql.Data.MySqlClient;
+using Mysqlx.Datatypes;
 
 
 
@@ -130,7 +131,7 @@ namespace Cumulative1.Controllers
 
 
                 // @id is replaced with a 'sanitized'(masked) id so that id can be referenced
-               
+
                 Command.CommandText = "select * from teachers where teacherid=@id";
                 Command.Parameters.AddWithValue("@id", id);
 
@@ -255,9 +256,76 @@ namespace Cumulative1.Controllers
                 if (rowsAffected == 0)
                     return NotFound("Teacher not found.");
 
-                return Ok("Teacher deleted successfully.");
+                return Ok("Teacher updated successfully.");
             }
         }
+
+        /// <summary>
+        /// Updates a Teacher in the database. Data is provided as a Teacher object, and the request query contains the Teacher ID.
+        /// </summary>
+        /// <param name="TeacherData">The Teacher object containing updated information.</param>
+        /// <param name="TeacherId">The primary key ID of the Teacher to update.</param>
+        /// <example>
+        /// PUT: api/Teacher/UpdateTeacher/4
+        /// Headers: Content-Type: application/json
+        /// Request Body:
+        /// {
+        ///     "TeacherFName": "John",
+        ///     "TeacherLName": "Doe",
+        ///     "HireDate": "2020-01-01",
+        ///     "Salary": 55000.00
+        /// }
+        /// Response:
+        /// {
+        ///     "TeacherId": 4,
+        ///     "TeacherFName": "John",
+        ///     "TeacherLName": "Doe",
+        ///     "HireDate": "2020-01-01",
+        ///     "Salary": 55000.00
+        /// }
+        /// </example>
+        /// <returns>
+        /// The updated Teacher object if successful, or a NotFound result if the teacher does not exist.
+        /// </returns>
+
+        [HttpPost("UpdateTeacher/{id}")]
+        public IActionResult UpdateTeacher(int id, [FromBody] Teacher updatedTeacher)
+        {
+            
+            if (updatedTeacher == null)
+                return BadRequest("Invalid data. Please check the request body.");
+
+            if (string.IsNullOrWhiteSpace(updatedTeacher.TeacherFName) || string.IsNullOrWhiteSpace(updatedTeacher.TeacherLName))
+                return BadRequest("First Name and Last Name cannot be empty.");
+
+            if (updatedTeacher.TeacherHireDate > DateTime.Now)
+                return BadRequest("Hire date cannot be in the future.");
+
+            if (updatedTeacher.TeacherSalary < 0)
+                return BadRequest("Salary cannot be negative.");
+
+            using (MySqlConnection connection = _context.AccessDatabase())
+            {
+                connection.Open();
+                MySqlCommand command = connection.CreateCommand();
+                command.CommandText = "UPDATE teachers SET teacherfname=@fname, teacherlname=@lname, employeenumber=@empnum, " +
+                                      "hiredate=@hiredate, salary=@salary WHERE teacherid=@id";
+                command.Parameters.AddWithValue("@id", id);
+                command.Parameters.AddWithValue("@fname", updatedTeacher.TeacherFName);
+                command.Parameters.AddWithValue("@lname", updatedTeacher.TeacherLName);
+                command.Parameters.AddWithValue("@empnum", updatedTeacher.EmployeeNumber);
+                command.Parameters.AddWithValue("@hiredate", updatedTeacher.TeacherHireDate);
+                command.Parameters.AddWithValue("@salary", updatedTeacher.TeacherSalary);
+
+               
+                int affectedRows = command.ExecuteNonQuery();
+                if (affectedRows == 0)
+                    return NotFound($"Teacher with ID {id} not found or no changes detected.");
+            }
+
+            return Ok("Teacher updated successfully.");
+        }
+
 
 
     }

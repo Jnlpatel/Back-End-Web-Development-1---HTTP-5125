@@ -92,5 +92,52 @@ namespace Cumulative1.Controllers
         }
 
 
+
+        /// <summary>
+        /// Displays a form for editing an existing teacher's information.
+        /// </summary>
+        /// <param name="id">The ID of the teacher to edit.</param>
+        /// <returns>
+        /// A view containing the form pre-filled with the selected teacher's information, or redirects to List if not found.
+        /// </returns>
+        public IActionResult Edit(int id)
+        {
+            Console.WriteLine(id);
+            Teacher teacher = _api.FindTeacherDetail(id);
+            if (teacher == null)
+            {
+                return RedirectToAction("List");
+            }
+            return View(teacher);
+        }
+
+        /// <summary>
+        /// Updates a teacher's information.
+        /// </summary>
+        /// <param name="id">The ID of the teacher.</param>
+        /// <param name="teacher">The updated teacher details.</param>
+        [HttpPost]
+        public IActionResult Update(int id, Teacher teacher)
+        {
+            Console.WriteLine(id);
+            if (!ModelState.IsValid)
+            {
+                return View("Edit", teacher);
+            }
+
+            IActionResult result = _api.UpdateTeacher(id, teacher);
+            if (result is BadRequestObjectResult badRequest)
+            {
+                ViewData["Error"] = badRequest.Value.ToString();
+                return View("Edit", teacher);
+            }
+
+            return RedirectToAction("Show", new { id = id });
+
+        }
+
+
+
+
     }
 }

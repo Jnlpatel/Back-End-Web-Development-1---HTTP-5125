@@ -36,5 +36,30 @@ namespace Cumulative1.Controllers
             Student student = _api.FindStudentDetail(id);
             return View(student); // Pass the student details to the view
         }
+
+        public IActionResult Add()
+        {
+            return View(); // Show a form for adding a new student
+        }
+
+        // Action to handle adding a student from the form submission
+        [HttpPost]
+        public IActionResult AddStudent(Student student)
+        {
+            if (ModelState.IsValid)
+            {
+                _api.AddStudent(student); // Call the API to add the student
+                return RedirectToAction("List"); // Redirect to the student list after adding
+            }
+            return View(student); // If model is not valid, return the form again with validation errors
+        }
+
+        // Action to delete a student
+        public IActionResult DeleteStudent(int id)
+        {
+            _api.DeleteStudent(id); // Call the API to delete the student
+            return RedirectToAction("List"); // Redirect to the student list after deletion
+        }
+    
     }
 }

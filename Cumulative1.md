@@ -33,6 +33,10 @@ This project demonstrates a **Teacher Management System** built with **ASP.NET C
 4. **DELETE: api/TeacherAPI/DeleteTeacher/{id}**
    - Deletes a teacher from the database.
 
+5. **UPDATE: - /api/TeacherApi/UpdateTeacher/{id}**
+   - Update a teacher from the database.
+
+
 
 ## Testing
 

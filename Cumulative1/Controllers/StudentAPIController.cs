@@ -87,5 +87,47 @@ namespace Cumulative1.Controllers
 
             return student;
         }
+
+        [HttpPost]
+        [Route("AddStudent")]
+        public int AddStudent([FromBody] Student studentData)
+        {
+            using (MySqlConnection connection = _context.AccessDatabase())
+            {
+                connection.Open();
+                MySqlCommand command = connection.CreateCommand();
+
+                // SQL command to insert a new student into the database
+                command.CommandText = "INSERT INTO students (StudentFName, StudentLName, StudentNumber, EnrolDate) " +
+                                      "VALUES (@StudentFName, @StudentLName, @StudentNumber, @EnrolDate)";
+                command.Parameters.AddWithValue("@StudentFName", studentData.StudentFName);
+                command.Parameters.AddWithValue("@StudentLName", studentData.StudentLName);
+                command.Parameters.AddWithValue("@StudentNumber", studentData.StudentNumber);
+                command.Parameters.AddWithValue("@EnrolDate", studentData.EnrolDate);
+
+                // Execute the query and return the last inserted student ID
+                command.ExecuteNonQuery();
+
+                return Convert.ToInt32(command.LastInsertedId);
+            }
+        }
+        [HttpDelete]
+        [Route("DeleteStudent/{id}")]
+        public int DeleteStudent(int id)
+        {
+            using (MySqlConnection connection = _context.AccessDatabase())
+            {
+                connection.Open();
+                MySqlCommand command = connection.CreateCommand();
+
+                // SQL command to delete a student based on their StudentId
+                command.CommandText = "DELETE FROM students WHERE StudentId = @id";
+                command.Parameters.AddWithValue("@id", id);
+
+                // Execute the delete query and return the number of rows affected (should be 1 if successful)
+                return command.ExecuteNonQuery();
+            }
+        }
+
     }
 }

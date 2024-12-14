@@ -21,7 +21,6 @@
                     <th>Last Name</th>
                     <th>Employee Number</th>
                     <th>Hire Date</th>
-                    <th>Salary</th>
                     <th>Actions</th>
                 </tr>
             </thead>
@@ -34,7 +33,6 @@
                         <td>@teacher.TeacherLName</td>
                         <td>@teacher.EmployeeNumber</td>
                         <td>@teacher.TeacherHireDate.ToString("yyyy-MM-dd")</td>
-                        <td>@teacher.TeacherSalary.ToString("C")</td>
                         <td>
                             <a asp-controller="TeacherPage" asp-action="Show" asp-route-id="@teacher.TeacherId" class="btn btn-primary btn-sm">
                                 View Details
@@ -44,6 +42,9 @@
                                     Delete
                                 </button>
                             </form>
+                            <a asp-controller="TeacherPage" asp-action="Edit" asp-route-id="@teacher.TeacherId" class="btn btn-primary btn-sm">
+                                Edit
+                            </a>
                         </td>
                     </tr>
                 }
